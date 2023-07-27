@@ -20,14 +20,42 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+  </script>
 </head>
-<body ng-app="" style="margin-left: 16px">
+<body ng-app="myApp" style="margin-left: 16px" ng-init="quantity=1;cost=5" ng-controller="myCtrl">
   <div>
-    <p>Hello world! This is HTML5 Boilerplate.</p>
+    <p>Hello world! This is a single-page application, that uses Angular!</p>
     <p>Name : <input type="text" ng-model="name"></p>
     <h1>Hello, {{name}}!</h1>
+
+    <p>My first expression: {{ 5 + 5 }}</p>
+    <p>Total in dollars: <span ng-bind="quantity * cost"></span></p>
   </div>
+
+  <div ng-init="person={firstName:'Mykola',lastName:'Filonovych'}">
+
+    <p>The person's full name is {{ person.firstName + " " + person.lastName }}.</p>
+
+  </div>
+
+  <div ng-app="" ng-init="points=[1,15,19,2,40]">
+
+    <p>The third result is {{ points[2] }}.</p>
+
+  </div>
+
+  <div>
+    <strong>There are such main skills: </strong> {{ programmingLanguage + ", " + databaseLanguage + ", " + framework }}.
+  </div>
+<script>
+  var app = angular.module("myApp", []);
+  app.controller("myCtrl", function($scope) {
+  $scope.programmingLanguage = "Java";
+  $scope.databaseLanguage = "MySQL";
+  $scope.framework = "Spring Framework";
+});
+</script>
 </body>
 
 </html>
